@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>TOP12_circle</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Teko:600" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Noto+Sans+SC%7CTeko:600" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+    <style>
+        /*ページ全体の構成*/
+        body{
+            color: #4e5a64;
+            font-size: 16px;
+            font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Helvetica, Arial, 'ＭＳ Ｐゴシック', sans-serif;
+            margin: 0;
+        }
+        a:link {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+        a:visited {
+            color: #9b9b9b;
+            text-decoration: none;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        /*全体の設定*/
+        .wrap{
+            width: 100%;
+        }
+        /*ヘッダーの設定*/
+        .header {
+            width: 100%;
+            color: #fff;
+            text-align: center;
+            /*ヘッダーの背景設定*/
+            background:linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),url('//web.fc2.com/fc2img/designtemplates/common/img_1920-1200.png') center center / 100% auto no-repeat fixed;
+            background-size: cover;
+            padding-bottom: 10rem;
+            margin: 0 0 80px 0;
+            font-family: 'object-fit: cover;';/*IE対策*/
+            position: relative
+        }
+        @media all and (-ms-high-contrast: none){/* IE対策 */
+            .headerMain-{
+                position: relative;
+                top: 50px;
+            }
+        }
+         /*ナビリスト*/
+        .headerNav-list {
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 20px 50px;
+        }
+        .headerNav-listItem {
+            padding: 10px 15px;
+            margin: 0 20px 0 0;
+            border: 1px solid #bbb;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+        .headerNav-listItem a {
+            color: #fff;
+        }
+        .headerNav-listItem a:hover{
+            color: #ccc;
+        }
+        @media screen and (max-width : 1025px){
+            .headerNav-list{
+                display: none;
+            }
+        }
+        /*ハンバーガーメニューの設定*/
+        @media screen and (min-width : 1024px){
+            #nav-drawer {
+                display: none;
+            }
+        }
+        @media screen and (max-width : 1025px){
+            #nav-drawer {
+                display: block;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                margin: 0 0 0 auto;/*IE対策の右寄せ*/
+            }
+            .nav-unshown {/*チェックボックス等は非表示に*/
+            display:none;
+            }
+
+            #nav-open { /*アイコンのスペース*/
+            display: inline-block;
+            width: 30px;
+            margin: 0 30px 0 0;
+            }
+            /*ハンバーガーアイコンをCSSだけで表現*/
+            #nav-open span, #nav-open span:before, #nav-open span:after {
+                position: absolute;
+                height: 4px;/*線の太さ*/
+                width: 30px;/*長さ*/
+                background: #fff;
+                display: block;
+                content: '';
+                cursor: pointer;
+            }
+            #nav-open span:before {
+                bottom: -8px;
+            }
+            #nav-open span:after {
+                bottom: -16px;
+            }
+            /*閉じる用の薄黒カバー*/
+            #nav-close {
+                display: none;/*はじめは隠しておく*/
+                position: fixed;
+                z-index: 99;
+                top: 0;/*全体に広がるように*/
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                opacity: 0;
+                transition: .3s ease-in-out;
+            }
+            /*ハンバーガーメニュー展開後の中身*/
+            #nav-content {
+                overflow: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;/*最前面に*/
+                width: 90%;/*右側に隙間を作る（閉じるカバーを表示）*/
+                max-width: 330px;/*最大幅*/
+                height: 100%;
+                background: #fff;/*背景色*/
+                transition: .3s ease-in-out;/*滑らかに表示*/
+                -webkit-transform: translateX(-105%);
+                transform: translateX(-105%);/*左に隠しておく*/
+            }
+            /*チェックが入った後の表示*/
+            #nav-input:checked ~ #nav-close {
+             display: block;/*カバーを表示*/
+             opacity: .5;
+            }
+            #nav-input:checked ~ #nav-content {
+                -webkit-transform: translateX(0%);
+                transform: translateX(0%);/*中身を表示（右へスライド）*/
+                box-shadow: 6px 0 25px rgba(0,0,0,.15);
+            }
+            /*展開後のリストのスタイル*/
+            .nav-drawerList{
+                list-style: none;
+                text-align: center;
+                padding: 0;
+            }
+            .nav-drawerList-item{
+                line-height: 1.5;
+            }
+            .nav-drawerList-item a{
+                width: 100%;
+                padding: 20px 0;
+                color: #4e5a64;
+                display: block;
+            }
+            .nav-drawerList-item a:hover{/*ナビカーソルon時*/
+                background: #c2c2c2;
+                transition: 0.8s;
+            }
+            .sns {/*SNSアイコン*/
+                display: flex;
+                justify-content: center;
+            }
+            .snsIcon{
+                width: 38px;
+                margin: 0 5px 0;
+            }
+            .nav-drawerNav-list{
+                justify-content: space-around;
+            }
+        }
+        /*サイトのタイトルの設定*/
+        .headerMain-title{/*サイトのタイトルの設定*/
+            margin: 50px 0;
+            font-size: 60px;
+            font-family: 'Teko', sans-serif;
+            position: relative;
+        }
+        .headerMain-title:after{
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: -10px;
+            margin: auto;
+            width: 50px;
+            height: 4px;
+            background: #fff;
+            content: '';
+        }
+        .headerMain-subscription {
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0 0 70px 0;
+        }
+        .headerMain-link {
+            width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        .headerMain-linkItem {
+            width: 200px;
+            display: block;
+            background: #bce9ff;
+            line-height: 4;
+        }
+        .headerMain-linkItem a{
+            display: block;
+        }
+        /*サイトのタイトルの1024px以下の設定*/
+        @media screen and (max-width : 1024px){
+            .header {
+                height: 180px;
+                margin: 0 0 50px 0;
+            }
+            .headerMain{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                text-align: center;
+            }
+            .headerMain{
+                margin: 0 auto;
+            }
+            .headerMain-title {
+                font-size: 38px;
+                font-weight: bold;
+            }
+            .headerMain-link{
+                display: none;
+            }
+        }
+    .main {
+        max-width: 1024px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .main-link{
+        display: none;
+    }
+    .mainNav {
+        width: 20%;
+        padding: 0 20px;
+    }
+    .mainNav-list {
+        margin: 20px 0;
+    }
+    .mainNav-listTitle {
+        padding: 10px;
+        margin: 0 0 15px 0;
+        background: #bce9ff;
+    }
+    .mainNav-listItem {
+        margin: 0 10px;
+        line-height: 1.8;
+        display: block;
+    }
+    .mainNav-listItem a {
+        display: block;
+    }
+    .sns {/*SNSアイコン*/
+        display: flex;
+        justify-content: center;
+    }
+    .snsIcon{
+        width: 38px;
+        margin: 0 5px 0;
+    }
+    .mainTopic{
+        width: 80%;
+        padding: 0 20px;
+    }
+    @media screen and (max-width : 1024px){
+        .main{
+            display: block;
+        }
+        .main-link{
+            display: flex;
+            max-width: 440px;
+            margin: 0 auto 50px;
+        }
+        .main-link li{
+            width: 200px;
+            margin: 0 10px 0;
+            display: block;
+            background: #91b4c5;
+            line-height: 4;
+            text-align: center;
+        }
+        .main-link li a{
+            color: #fff;
+            display: block;
+        }
+        .mainNav {
+            display: none;
+        }
+        .mainTopic {
+            width: auto;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+    }
+    /*mainsection*/
+    .mainSection {
+        margin: 0 0 100px 0;
+        position: relative;
+    }
+    .mainSection-header {
+    margin-bottom: 20px;
+    border-bottom: 1px dotted #ccc;
+    display: flex;
+    align-items: center;
+    }
+    .mainSection-header:before {
+        width: 10px;
+        height: 40px;
+        background: #bce9ff;
+        content: "";
+        top: 0;
+        bottom: 0;
+    }
+    .mainSection-headerTitle {
+        padding: 0 0 0 20px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #808080;
+        margin: 0 20px 0 0;
+    }
+    .mainSection-HeaderSubtitle {
+        color: #ccc;
+    }
+    .mainSection-button {
+        position: absolute;
+        right: 0;
+        display: block;
+        width: 120px;
+        padding: 5px;
+        margin: 10px 0 0;
+        text-align: center;
+        background: #f2f2f2;
+    }
+    .mainSection-button a {
+        display: block;
+        width: 100%;
+    }
+    @media screen and (max-width : 1024px){
+        .mainSection-headerTitle {
+        padding: 0 0 0 10px;
+        }
+        .newsList {
+            margin: 0 0 0 20px;
+        }
+    }
+    /*news*/
+    .newsList {
+        margin: 0 0 0 32px;
+    }
+    .newsList-card {
+        padding-bottom: 20px;
+        margin: 20px 0 0 0;
+    }
+    .newsList-card:hover {
+        opacity: 0.7;
+    }
+    .newsList-cardHeader {
+        display: flex;
+    }
+    .newsList-cardHeader-date {
+        font-weight: 700;
+        margin: 0 20px 0 0;
+    }
+    .newsList-cardHeader-tag {
+        color: #ccc;
+    }
+    .newsList-cardTitle {
+        color: #595959;
+        margin: 10px 0 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    @media screen and (max-width : 1024px){
+        .newsList {
+            margin: 0 0 0 20px;
+        }
+    }
+    /*achievement*/
+    .achievement {
+        margin: 0 0 0 32px;
+    }
+    .achievement-date {
+    color: #888;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    }
+    .achievement-tournament {
+        font-size: 14px;
+        color: #888;
+        margin: 0 0 20px 0;
+    }
+    .achievement-result {
+        color: #555;
+        font-weight: 700;
+    }
+    .achievement-resultTitle {
+        font-size: 18px;
+    }
+    .achievement-resultInfo {
+        font-size: 28px;
+    }
+
+    /*ahievement*/
+    .activityImage {
+        margin: 0 0 160px;
+    }
+    .activityImage-list {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+    }
+    .activityImage-listItem {
+        width: 160px;
+        height: 160px;
+            margin: 0 10px 10px 10px;
+    }
+    .activityImage-listItem img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        font-family: 'object-fit: cover;'; /*IE対策*/
+    }
+    .activityMovie-list {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 30px;
+    }
+    .activityIMovie-listItem-img {
+        width: 350px;
+        height: 180px;
+        margin: 0 15px 15px 15px;
+    }
+    .activityIMovie-listItem-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        font-family: 'object-fit: cover;'; /*IE対策*/
+    }
+    .activityIMovie-listItem-date {
+        font-size: 14px;
+        margin: 0 0 0 15px;
+    }
+    .activityIMovie-listItem-title {
+        margin: 0 0 0 15px;
+    }
+    @media screen and (max-width : 1024px){
+        .activityMovie-list {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 0 30px;
+            flex-wrap: wrap;
+        }
+    }
+    /*footer*/
+    .footer {
+        background: #f2f2f2;
+    }
+    .footerContents {
+        display: flex;
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 30px 0;
+    }
+    .footerContents-main {
+        color: #808080;
+        position: relative;
+        width: 35%;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .footerContents-mainTitle {
+        font-size: 34px;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+    .footerContents-mainAdd {
+        margin: 0 0 5px 0;
+    }
+    .footerContents-mainTel {
+        font-size: 30px;
+        margin: 0 0 50px 0;
+    }
+    .footerContents-mainInfo {
+        position: absolute;
+        font-size: 14px;
+        bottom: 0;
+    }
+    .footerContents-sub {
+        display: flex;
+        justify-content: space-around;
+        width: 65%;
+    }
+    .footerContents-subNavi {
+        width: 120px;
+        line-height: 1.7;
+    }
+    .footerContents-subNavi-fast{
+        width: 240px;
+    }
+    .footerContents-subNavi-list{
+        margin: 0 0 0 10px;
+    }
+    .footerContents-subNavi-fastList{
+        display: flex;
+        justify-content: space-around;
+        margin: 0 0 0 10px;
+    }
+    .footerContents-subNavi-fastList li{
+        width: 50%;
+    }
+    .footerContents-subNavi-title {
+        padding: 0 0 0 10px;
+        background: #ddd;
+        margin: 0 0 10px 0;
+    }
+    @media screen and (max-width : 1024px){
+        .footerContents-main {
+            position: relative;
+            width: auto;
+            max-width: 350px;
+            text-align: center;
+        }
+        .footerContents-mainInfo {
+            position: inherit;
+        }
+        .footerContents-sub {
+        display: none;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="headerMain">
+                <div class="headerNav">
+                        <ul class="headerNav-list">
+                            <li class="headerNav-listItem"><a href="#">問い合わせ</a></li>
+                            <li class="headerNav-listItem"><a href="#">よくある質問</a></li>
+                        </ul>
+                        <div id="nav-drawer"><!--960px以下のナビ-->
+                            <input id="nav-input" type="checkbox" class="nav-unshown" value="">
+                            <label id="nav-open" for="nav-input"><span></span></label>
+                            <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+                            <div id="nav-content">
+                                <div class="mainNav-listTitle">MENU</div>
+                                <ul class="mainNav-list">
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                </ul>
+                                <div class="mainNav-listTitle">入団希望の方</div>
+                                <ul class="mainNav-list">
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                </ul>
+                                <div class="mainNav-listTitle">MENU</div>
+                                <ul class="mainNav-list">
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                                </ul>
+                                <div class="mainNav-listTitle">SNS</div>
+                                <ul class="sns"><!--SNSアイコン-->
+                                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-tw.svg" class="snsIcon" alt="Twitter"></a></li>
+                                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-ig.svg" class="snsIcon" alt="Instagram"></a></li>
+                                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-fb.svg" class="snsIcon" alt="facebook"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <div class="headerMain-title">隼大学野球サークル</div><!--サイトタイトル-->
+                <div class="headerMain-subscription">ようこそ！こちらは隼大学公式野球チームです。<br>活動の内容や今後の予定、近況などを更新していきます。<br>応援よろしくお願いいたします！！<br>入会を考えている方、ご連絡お待ちしております。
+                </div>
+                <ul class="headerMain-link">
+                    <li class="headerMain-linkItem"><a href="#">入団希望の方</a></li>
+                    <li class="headerMain-linkItem"><a href="#">活動内容について</a></li>
+                </ul>
+            </div>
+        </div><!--header-->
+        <div class="main">
+            <ul class="main-link">
+                <li class="main-linkItem"><a href="#">入団希望の方</a></li>
+                <li class="main-linkItem"><a href="#">活動内容について</a></li>
+            </ul>
+            <div class="mainNav"><!--960p以上のナビ-->
+                <div class="mainNav-listTitle">MENU</div>
+                <ul class="mainNav-list">
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                </ul>
+                <div class="mainNav-listTitle">入団希望の方</div>
+                <ul class="mainNav-list">
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                </ul>
+                <div class="mainNav-listTitle">MENU</div>
+                <ul class="mainNav-list">
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                    <li class="mainNav-listItem"><a href="#">home</a></li>
+                </ul>
+                <div class="mainNav-listTitle">SNS</div>
+                <ul class="sns"><!--SNSアイコン-->
+                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-tw.svg" class="snsIcon" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-ig.svg" class="snsIcon" alt="Instagram"></a></li>
+                    <li><a href="#"><img src="//web.fc2.com/fc2img/designtemplates/common/icon-fb.svg" class="snsIcon" alt="facebook"></a></li>
+                </ul>
+            </div>
+            <div class="mainTopic"><!--news-->
+                <div class="mainSection news">
+                    <div class="mainSection-header">
+                        <div class="mainSection-headerTitle">最新情報</div>
+                        <div class="mainSection-HeaderSubtitle">news</div>
+                    </div>
+                    <ul class="newsList">
+                        <li class="newsList-card">
+                            <a href="#">
+                                <div class="newsList-cardHeader">
+                                    <div class="newsList-cardHeader-date">2023-05-13</div>
+                                    <div class="newsList-cardHeader-tag">試合結果</div>
+                                </div>
+                                <div class="newsList-cardTitle">練習試合の結果報告-大鷲大学</div>
+                                <div class="newsList-cardText">この文章はサンプルです。お知らせの情報を記載しましょう。文字の大きさや余白などを確認しましょう</div>
+                            </a>
+                        </li>
+                        <li class="newsList-card">
+                            <a href="#">
+                                <div class="newsList-cardHeader">
+                                    <div class="newsList-cardHeader-date">2023-05-13</div>
+                                    <div class="newsList-cardHeader-tag">試合結果</div>
+                                </div>
+                                <div class="newsList-cardTitle">練習試合の結果報告-大鷲大学</div>
+                                <div class="newsList-cardText">この文章はサンプルです。お知らせの情報を記載しましょう。文字の大きさや余白などを確認しましょう</div>
+                            </a>
+                        </li>
+                        <li class="newsList-card">
+                            <a href="#">
+                                <div class="newsList-cardHeader">
+                                    <div class="newsList-cardHeader-date">2023-05-13</div>
+                                    <div class="newsList-cardHeader-tag">試合結果</div>
+                                </div>
+                                <div class="newsList-cardTitle">練習試合の結果報告-大鷲大学</div>
+                                <div class="newsList-cardText">この文章はサンプルです。お知らせの情報を記載しましょう。文字の大きさや余白などを確認しましょう</div>
+                            </a>
+                        </li>
+                        <li class="newsList-card">
+                            <a href="#">
+                                <div class="newsList-cardHeader">
+                                    <div class="newsList-cardHeader-date">2023-05-13</div>
+                                    <div class="newsList-cardHeader-tag">試合結果</div>
+                                </div>
+                                <div class="newsList-cardTitle">練習試合の結果報告-大鷲大学</div>
+                                <div class="newsList-cardText">この文章はサンプルです。お知らせの情報を記載しましょう。文字の大きさや余白などを確認しましょう</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mainSection-button"><a href="">もっと見る</a></div>
+                </div>
+                <div class="mainSection"><!--achievement-->
+                    <div class="mainSection-header">
+                        <div class="mainSection-headerTitle">大会記録</div>
+                        <div class="mainSection-HeaderSubtitle">achievement</div>
+                    </div>
+                    <div class="achievement">
+                        <div class="achievement-date">2022年度実績</div>
+                        <ul class="achievement-tournament">
+                            <li class="achievement-tournamentTitle">全日本東大学野球選手権大会</li>
+                            <li class="achievement-tournamentInfo">【6/14●●球場　試合開始9：00　試合終了11：45】</li>
+                        </ul>
+                        <ul class="achievement-result">
+                            <li class="achievement-resultTitle">準々決勝</li>
+                            <li class="achievement-resultInfo">隼大学　2　-　3　永長大学</li>
+                        </ul>
+                    </div>
+                    <div class="mainSection-button"><a href="">もっと見る</a></div>
+                </div>
+                <div class="mainSection"><!--activity-->
+                    <div class="mainSection-header">
+                        <div class="mainSection-headerTitle">活動記録</div>
+                        <div class="mainSection-HeaderSubtitle">Achievement</div>
+                    </div>
+                    <div class="activity">
+                        <div class="activityImage">
+                            <ul class="activityImage-list">
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                            </ul>
+                            <ul class="activityImage-list">
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                                <li class="activityImage-listItem"><img src="//web.fc2.com/fc2img/designtemplates/common/img_180-180.png" alt="活動記録"></li>
+                            </ul>
+                            <div class="mainSection-button"><a href="">もっと見る</a></div>
+                        </div>
+                        <div class="activityMovie">
+                            <ul class="activityMovie-list">
+                                <li class="activityIMovie-listItem">
+                                    <div class="activityIMovie-listItem-img">
+                                        <img src="//web.fc2.com/fc2img/designtemplates/common/img_350-180.png" alt="試合記録">
+                                    </div>
+                                    <div class="activityIMovie-listItem-date">2023-03-05</div>
+                                    <div class="activityIMovie-listItem-title">カモメ大学練習試合3回裏</div>
+                                </li>
+                                <li class="activityIMovie-listItem">
+                                    <div class="activityIMovie-listItem-img">
+                                        <img src="//web.fc2.com/fc2img/designtemplates/common/img_350-180.png" alt="試合記録">
+                                    </div>
+                                    <div class="activityIMovie-listItem-date">2023-03-05</div>
+                                    <div class="activityIMovie-listItem-title">カモメ大学練習試合3回裏</div>
+                                </li>
+                            </ul>
+                            <ul class="activityMovie-list">
+                                <li class="activityIMovie-listItem">
+                                    <div class="activityIMovie-listItem-img">
+                                        <img src="//web.fc2.com/fc2img/designtemplates/common/img_350-180.png" alt="試合記録">
+                                    </div>
+                                    <div class="activityIMovie-listItem-date">2023-03-05</div>
+                                    <div class="activityIMovie-listItem-title">カモメ大学練習試合3回裏</div>
+                                </li>
+                                <li class="activityIMovie-listItem">
+                                    <div class="activityIMovie-listItem-img">
+                                        <img src="//web.fc2.com/fc2img/designtemplates/common/img_350-180.png" alt="試合記録">
+                                    </div>
+                                    <div class="activityIMovie-listItem-date">2023-03-05</div>
+                                    <div class="activityIMovie-listItem-title">カモメ大学練習試合3回裏</div>
+                                </li>
+                            </ul>
+                            <div class="mainSection-button"><a href="">もっと見る</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mainSection">
+                    <div class="mainSection-header">
+                        <div class="mainSection-headerTitle">SNS</div>
+                        <div class="mainSection-HeaderSubtitle">SocialNetService</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footerContents">
+                <div class="footerContents-main">
+                    <div class="footerContents-mainTitle">隼大学野球サークル</div>
+                    <div class="footerContents-mainAdd">000-0000　●●県●●市●●●●-●●</div>
+                    <div class="footerContents-mainTel">000-000-0000</div>
+                    <div class="footerContents-mainInfo">ホームページに関する注意事項など入ります</div>
+                </div>
+                <div class="footerContents-sub">
+                    <div class="footerContents-subNavi footerContents-subNavi-fast">
+                        <div class="footerContents-subNavi-title">HOME</div>
+                        <ul class="footerContents-subNavi-list footerContents-subNavi-fastList">
+                            <li class="footerContents-subNavi-listItem">
+                                <ul>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                </ul>
+                            </li>
+                            <li class="footerContents-subNavi-listItem">
+                                <ul>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">home</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footerContents-subNavi">
+                        <div class="footerContents-subNavi-title">HOME</div>
+                        <ul class="footerContents-subNavi-list">
+                            <li class="footerContents-subNavi-listItem"><a href="#">home</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerContents-subNavi">
+                        <div class="footerContents-subNavi-title">HOME</div>
+                        <ul class="footerContents-subNavi-list">
+                            <li class="footerContents-subNavi-listItem"><a href="#">home</a></li>
+                            <li class="footerContents-subNavi-listItem"><a href="#">home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--objedt-fit（IE対策）-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.3/ofi.js"></script>
+    <script>objectFitImages();</script>
+    <script>/*IEで固定した背景がカクカクするのを抑える対策*/
+        if(navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.match(/Edge\/12\./)) {
+        $('body').on("mousewheel", function () {
+        event.preventDefault();
+        var wd = event.wheelDelta;
+        var csp = window.pageYOffset;
+        window.scrollTo(0, csp - wd);
+        });
+        }
+    </script>
+</body>
+
+</html>

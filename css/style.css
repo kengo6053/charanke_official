@@ -1,0 +1,33 @@
+@charset "UTF-8";
+html body {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  color: #333;
+}
+.text-MPLUS1p{
+  font-family: 'M PLUS 1p', sans-serif;
+}
+.h-01{
+  height: 0.1rem;
+}
+.h-96{
+  height: 24rem;
+}
+
+/* ハンバーガーメニュー */
+#humberger.open {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  transition: 0.4s;
+  height: 0.18rem;
+}
+
+#humberger.open span:nth-child(1) {
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+transition: 0.4s;
+}
+#humberger.open span:nth-child(2) {
+-webkit-transform: rotate(-45deg);
+transform: rotate(-45deg);
+transition: 0.4s;
+}
