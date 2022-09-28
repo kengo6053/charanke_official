@@ -14,19 +14,19 @@ html body {
 }
 
 /* ハンバーガーメニュー */
-#humberger.open {
+#menu.open {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   transition: 0.4s;
   height: 0.18rem;
 }
 
-#humberger.open span:nth-child(1) {
+#menu.open span:nth-child(1) {
 -webkit-transform: rotate(45deg);
 transform: rotate(45deg);
 transition: 0.4s;
 }
-#humberger.open span:nth-child(2) {
+#menu.open span:nth-child(2) {
 -webkit-transform: rotate(-45deg);
 transform: rotate(-45deg);
 transition: 0.4s;

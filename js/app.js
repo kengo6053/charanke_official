@@ -16,9 +16,9 @@
 
 // ハンバーガーメニュー
 $(function(){
-  $("#humberger").on("click", function(){
+  $("#menu").on("click", function(){
     console.log('ok');
       $(this).toggleClass("open");
-      $('#humberger-contents').toggleClass("hidden");
+      $('#menu-contents').toggleClass("hidden");
   });
 });
