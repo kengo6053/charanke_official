@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="ちゃらんけ,チャランケ,トライアスロン,北海道大学,北大,北海道,サークル,部活"
+      name="keywords"
+    />
+    <meta
+      content="北海道大学トライアスロン部公式ウェブサイト / 初心者・マネージャー・他大の選手大歓迎！ / 全体練習は週3回！ / やる気さえあれば問題なし！"
+      name="description"
+    />
+    <meta content="(C)2023 Charanke" name="copyright" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="common.css" />
+    <link
+      href="../css/normalize.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../css/style.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- font awesome -->
+    <script
+      src="https://kit.fontawesome.com/137e363532.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <script src="../js/jquery-3.4.1.js" defer></script>
+    <script src="../js/app.js" defer></script>
+
+    <title>北大トライアスロン部ちゃらんけ公式サイト</title>
+  </head>
+  <body>
+    <!-- [FC2 Analyzer] http://analyzer.fc2.com/  -->
+    <script
+      language="javascript"
+      src="https://analyzer52.fc2.com/ana/processor.php?uid=1086501"
+      type="text/javascript"
+    ></script>
+    <noscript>
+      <div style="text-align: right;">
+        <img
+          class="endgnamjezeqmzenxbfy ejaxntyyzguzegiowopb"
+          src="http://analyzer52.fc2.com/ana/icon.php?uid=1086501&amp;ref=&amp;href=&amp;wid=0&amp;hei=0&amp;col=0"
+        />
+      </div>
+    </noscript>
+    <!-- [FC2 Analyzer]  -->
+
+    <header>
+      <div class="w-full mx-auto">
+        <div class="flex items-center md:mx-8 justify-between">
+          <div class="flex items-end">
+            <div
+              class="md:mr-20 py-4 text-lg md:text-xl text-MPLUS1p whitespace-no-wrap"
+            >
+              北大トライアスロン部 ちゃらんけ
+            </div>
+            <div class="text-md text-gray-700 hidden md:block">
+              <ul class="flex">
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 hover:border-teal-500 duration-200"
+                    href="../index.html"
+                  >
+                    トップ
+                  </a>
+                </li>
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 hover:border-teal-500 duration-200"
+                    href="../about/about.html"
+                  >
+                    活動内容
+                  </a>
+                </li>
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 hover:border-teal-500 duration-200"
+                    href="../member/member.html"
+                  >
+                    部員紹介
+                  </a>
+                </li>
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 hover:border-teal-500 duration-200"
+                    href="../results/results.html"
+                  >
+                    大会結果
+                  </a>
+                </li>
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 hover:border-teal-500 duration-200"
+                    href="http://charanke.blog86.fc2.com/"
+                    target="_blank"
+                  >
+                    ブログ
+                    <i class="fas fa-sign-out-alt"></i>
+                  </a>
+                </li>
+                <li class="flex items-end">
+                  <a
+                    class="px-4 py-3 border-b-4 border-teal-500 duration-200"
+                    href="#"
+                  >
+                    新歓用ページ
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button
+              id="menu"
+              class="md:hidden w-6 h-3 relative focus:outline-none"
+            >
+              <span
+                class="w-full h-01 bg-gray-800 duration-400 absolute top-0 left-0"
+              ></span>
+              <span
+                class="w-full h-01 bg-gray-800 duration-400 absolute bottom-0 left-0"
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        id="menu-contents"
+        class="hidden top-0 right-0 w-10/12 h-screen duration-400"
+      >
+        <ul class="flex flex-col mt-12 text-2xl">
+          <li class="flex items-end">
+            <a
+              class="p-8 hover:text-teal-500 duration-200"
+              href="../index.html"
+            >
+              トップ
+            </a>
+          </li>
+          <li class="flex items-end">
+            <a
+              class="p-8 hover:text-teal-500 duration-200"
+              href="../about/about.html"
+            >
+              活動内容
+            </a>
+          </li>
+          <li class="flex items-end">
+            <a
+              class="p-8 hover:text-teal-500 duration-200"
+              href="../member/member.html"
+            >
+              部員紹介
+            </a>
+          </li>
+          <li class="flex items-end">
+            <a
+              class="p-8 hover:text-teal-500 duration-200"
+              href="../results/results.html"
+            >
+              大会結果
+            </a>
+          </li>
+          <li class="flex items-end">
+            <a
+              class="p-8 hover:text-teal-500 duration-200"
+              href="http://charanke.blog86.fc2.com/"
+            >
+              ブログ
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+          </li>
+          <li class="flex items-end">
+            <a class="p-8 text-teal-500 duration-200" href="#">新歓用ページ</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="main-shinkan2023">
+      <div id="wrap" ontouchstart="">
+        <section class="triathlon-toha">
+          <img
+            class="topimg pc"
+            src="../images/triathlontoha.jpg"
+            alt="SwimBikeRun"
+          />
+          <img
+            class="topimg phone"
+            src="../images/triathlontoha2.jpg"
+            alt="SwimBikeRun"
+          />
+          <div class="description">
+            <p class="big-p">WELCOME TO CHARANKE!</p>
+            <p class="normal-p">新年度の活動</p>
+            <p class="small-p">
+              このページでは、新歓に関する情報や、よくある質問を掲載しています。
+            </p>
+          </div>
+        </section>
+        <section class="content news">
+          <div class="h2-title">新歓情報</div>
+          <ul class="news-ul">
+            <!-- <li></li>をコピーして、日付とタイトルを入力 -->
+            <!-- <li class="news-li small-p"><a href="https://twitter.com/hokudai_new">
+                        <time class="date">2021.4.4</time>
+                        <span class="title">北大春新歓祭り2021</span>
+                    </a></li>
+                    <li class="news-li small-p">
+                      <a href="#">
+                        <time class="date">2021.4.7</time>
+                        <span class="title">オンライン新歓 18:30~</span>
+                      </a>
+                    </li>
+                    <li class="news-li small-p"><a href="https://twitter.com/13LABO_cafe/status/1379023925242257409">
+                        <time class="date">2021.4.11</time>
+                        <span class="title">オンライン合同説明会 16:20~</span>
+                    </a></li>
+                    <li class="news-li small-p">
+                      <a href="#">
+                        <time class="date">2021.4.11</time>
+                        <span class="title">オンライン新歓 18:30~</span>
+                      </a>
+                    </li> -->
+            <li class="news-li small-p">
+              <a href="#">
+                <time class="date">2023.3.23</time>
+                <span class="title">TKF様主催 オンライン新歓① 18:30~</span>
+              </a>
+            </li>
+            <li class="news-li small-p">
+              <a href="#">
+                <time class="date">2023.4.3</time>
+                <span class="title">
+                  北海道大学”縁”様主催 北大合同新歓 19:00~
+                </span>
+              </a>
+            </li>
+            <li class="news-li small-p">
+              <a href="#">
+                <time class="date">2023.4.6</time>
+                <span class="title">TKF様主催 オンライン新歓② 19:30~</span>
+              </a>
+            </li>
+            <li class="news-li small-p">
+              <a href="#">
+                <time class="date">2023.4.12</time>
+                <span class="title">TKF様主催 オンライン新歓③ 19:30~</span>
+              </a>
+            </li>
+            <li class="news-li small-p">
+              <a href="#">
+                <time class="date">2023.4.15</time>
+                <span class="title">全学新歓</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <section class="content news">
+          <div class="h2-title">よくあるご質問</div>
+          <ul class="question-ul">
+            <li class="question-li">
+              <dl>
+                <dt>ロードバイクは買わないといけないのですか？</dt>
+                <dd>
+                  一年生の間は部のロードバイクを年間5000円で貸し出しています。1年生の間にお金をためて、2年生までに自分のバイクを購入することを推奨しています。
+                </dd>
+              </dl>
+            </li>
+            <li class="question-li">
+              <dl>
+                <dt>兼部、兼サーは出来ますか？</dt>
+                <dd>
+                  もちろん大丈夫です！他の運動部と兼部している人や複数のサークルを掛け持ちしている人もいます。お互いに支障が出ない範囲なら全然大丈夫なので、せっかくの大学生活色々やってみましょう！！
+                </dd>
+              </dl>
+            </li>
+          </ul>
+        </section>
+        <section class="content movie sns">
+          <div class="h2-title">YOUTUBE</div>
+          <div class="youtube-wrapper">
+            <div class="youtube">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/e1KBaDkqkbM"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="youtube">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/7sTatZZDlTQ"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section class="twitter">
+          <div class="h2-title">twitter</div>
+          <div class="twitter-frame pc">
+            <a
+              class="twitter-timeline"
+              data-width:90%
+              data-height="550"
+              data-theme="light"
+              data-chrome="noheader nofooter"
+              href="https://twitter.com/swnbikrun?ref_src=twsrc%5Etfw"
+            >
+              Tweets by swnbikrun
+            </a>
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
+          </div>
+          <div class="twitter-frame phone">
+            <a
+              class="twitter-timeline"
+              data-width:90%
+              data-height="450"
+              data-theme="light"
+              data-chrome="noheader nofooter"
+              href="https://twitter.com/swnbikrun?ref_src=twsrc%5Etfw"
+            >
+              Tweets by swnbikrun
+            </a>
+            <script
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"
+            ></script>
+          </div>
+        </section>
+        <section class="content mail">
+          <div class="h2-title">mail</div>
+          <dd>お問い合わせ(コピーできます)</dd>
+          <dd>hokudai.triathlon@gmail.com</dd>
+        </section>
+
+        <!-- page topボタン -->
+        <p id="scrollTop"><a href="#">▲ 戻る</a></p>
+
+        <!-- FC2, inc.-->
+        <img
+          alt="inserted by FC2 system"
+          height="0"
+          src="http://media.fc2.com/counter_img.php?id=50"
+          style="visibility: hidden;"
+          width="0"
+        />
+        <!-- FC2, inc.-->
+      </div>
+
+      <script type="text/javascript">
+        //<![CDATA[
+        //--
+        var fhp_c_pc = navigator.userAgent.toLowerCase()
+        var fhp_ie =
+          fhp_c_pc.indexOf('msie') != -1 && fhp_c_pc.indexOf('opera') == -1
+        var fhp_cs, fhp_wt, fhp_dm
+
+        if (fhp_ie) {
+          fhp_cs = document.charset
+        } else {
+          fhp_cs = document.characterSet
+        }
+        fhp_dm = encodeURI(document.location)
+
+        fhp_wt = ''
+        fhp_wt =
+          '<' +
+          'script src="http://web.fc2.com/header.php?cs=' +
+          fhp_cs +
+          '&dm=' +
+          fhp_dm +
+          '" charset="UTF-8"><' +
+          '/script>'
+        fhp_wt +=
+          '<' +
+          'script src="http://web.fc2.com/footer/footer.php?cs=' +
+          fhp_cs +
+          '&dm=' +
+          fhp_dm +
+          '"><' +
+          '/script>'
+        document.write(fhp_wt)
+        //--
+        //]]>
+      </script>
+      <script src="js/jquery-3.4.1.js"></script>
+      <script src="slick/slick.js"></script>
+      <script src="js/app.js"></script>
+    </div>
+
+    <footer class="text-white text-center py-8 bg-gray-800">
+      <script type="text/javascript">
+        document.write('last update:' + document.lastModified)
+      </script>
+      <address>
+        Copyright(C)2021-2023 charanke/IttetsuSato,KengoHoi
+      </address>
+    </footer>
+  </body>
+</html>
